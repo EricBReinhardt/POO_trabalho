@@ -1,0 +1,30 @@
+{
+  "livros": [
+    {
+      "titulo": "O Senhor dos Anéis",
+      "autor": "J.R.R. Tolkien",
+      "isbn": "978-0618640157",
+      "ano": 1954
+    }
+  ],
+  "membros": [
+    {
+      "nome": "João Silva",
+      "telefone": "11987654321",
+      "endereco": "Rua das Flores, 123, São Paulo",
+      "matricula": "123456"
+    }
+  ],
+  "emprestimos": [
+    {
+      "livro": {
+        "isbn": "978-0618640157"
+      },
+      "membro": {
+        "matricula": "123456"
+      },
+      "dataEmprestimo": "2024-12-09T10:00:00.000Z",
+      "dataDevolucao": null
+    }
+  ]
+}
