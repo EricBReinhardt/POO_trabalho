@@ -28,6 +28,10 @@ export class Emprestimo {
     public getDataEmprestimo(): Date {
         return this.dataEmprestimo;
     }
+    
+    public getDataDevolucao(): Date | null {
+        return this.dataDevolucao;
+    }
 
     static adicionarEmprestimo(emprestimos: Emprestimo[], emprestimo: Emprestimo): void {
         emprestimos.push(emprestimo);
@@ -48,7 +52,4 @@ export class Emprestimo {
         });
     }
 
-    public getDataDevolucao(): Date | null {
-        return this.dataDevolucao;
-    }
 }

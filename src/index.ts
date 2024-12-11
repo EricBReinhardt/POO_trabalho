@@ -93,7 +93,7 @@ function realizarEmprestimo() {
 
     if (livro && membro) {
         const livroEmprestado = emprestimos.find(e => e.getLivro() === livro && !e.getDataDevolucao());
-        
+
         if (livroEmprestado) {
             console.log("Este livro já está emprestado e não foi devolvido. Não é possível realizar o empréstimo.");
         } else {
@@ -184,16 +184,19 @@ while (true) {
                 else if (escolhaEmprestimo === 2) Emprestimo.listarEmprestimos(emprestimos);
                 else if (escolhaEmprestimo === 3) {
                     const isbn = prompt("Digite o ISBN do livro que deseja devolver: ");
-                    const matricula = prompt("Digite a matrícula do membro: ");
                     const livro = livros.find(l => l.getIsbn() === isbn);
-                    const membro = membros.find(m => m.getMatricula() === matricula);
-                    const emprestimo = emprestimos.find(e => e.getLivro() === livro && e.getMembro() === membro && !e.getDataDevolucao());
-                    if (emprestimo) {
-                        emprestimo.devolver();
-                        salvarDados();
-                        console.log("Livro devolvido com sucesso!");
+                    if (livro) {
+                        const emprestimo = emprestimos.find(e => e.getLivro() === livro && !e.getDataDevolucao());
+
+                        if (emprestimo) {
+                            emprestimo.devolver();
+                            salvarDados();
+                            console.log("Livro devolvido com sucesso!");
+                        } else {
+                            console.log("Este livro não está mais emprestado ou já foi devolvido.");
+                        }
                     } else {
-                        console.log("Empréstimo não encontrado.");
+                        console.log("Livro não encontrado.");
                     }
                 } else if (escolhaEmprestimo === 4) break;
             }
