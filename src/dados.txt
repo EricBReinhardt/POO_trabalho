@@ -58,7 +58,7 @@
         "matricula": "654321"
       },
       "dataEmprestimo": "2024-12-10T14:00:00.000Z",
-      "dataDevolucao": "2024-12-20T14:00:00.000Z"
+      "dataDevolucao": "2024-12-11T22:21:03.504Z"
     },
     {
       "livro": {

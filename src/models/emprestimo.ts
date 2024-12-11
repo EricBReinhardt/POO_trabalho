@@ -48,16 +48,6 @@ export class Emprestimo {
         });
     }
 
-    static excluirEmprestimo(emprestimos: Emprestimo[], livro: Livro, membro: Membro): void {
-        const index = emprestimos.findIndex(e => e.getLivro() === livro && e.getMembro() === membro && !e.getDataDevolucao());
-        if (index !== -1) {
-            emprestimos.splice(index, 1);
-            console.log("Empréstimo excluído com sucesso!");
-        } else {
-            console.log("Empréstimo não encontrado.");
-        }
-    }
-
     public getDataDevolucao(): Date | null {
         return this.dataDevolucao;
     }

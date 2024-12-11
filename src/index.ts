@@ -90,11 +90,18 @@ function realizarEmprestimo() {
     const matricula = prompt("Digite a matrícula do membro: ");
     const livro = livros.find(l => l.getIsbn() === isbn);
     const membro = membros.find(m => m.getMatricula() === matricula);
+
     if (livro && membro) {
-        const emprestimo = new Emprestimo(livro, membro, new Date());
-        Emprestimo.adicionarEmprestimo(emprestimos, emprestimo);
-        salvarDados();
-        console.log("Empréstimo realizado com sucesso!");
+        const livroEmprestado = emprestimos.find(e => e.getLivro() === livro && !e.getDataDevolucao());
+        
+        if (livroEmprestado) {
+            console.log("Este livro já está emprestado e não foi devolvido. Não é possível realizar o empréstimo.");
+        } else {
+            const emprestimo = new Emprestimo(livro, membro, new Date());
+            Emprestimo.adicionarEmprestimo(emprestimos, emprestimo);
+            salvarDados();
+            console.log("Empréstimo realizado com sucesso!");
+        }
     } else {
         console.log("Livro ou Membro não encontrado.");
     }

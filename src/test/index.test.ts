@@ -107,15 +107,5 @@ describe('Sistema de Biblioteca', () => {
             emprestimo.devolver();
             expect(emprestimo.getDataDevolucao()).not.toBeNull();
         });
-
-        it('deve excluir um empréstimo', () => {
-            const livro = new Livro('Livro A', 'Autor A', '123', 2020);
-            const membro = new Membro('João', '123', 'Rua A', 'M001');
-            const emprestimo = new Emprestimo(livro, membro, new Date());
-            Emprestimo.adicionarEmprestimo(emprestimos, emprestimo);
-
-            Emprestimo.excluirEmprestimo(emprestimos, livro, membro);
-            expect(emprestimos.length).toBe(0);
-        });
     });
 });
