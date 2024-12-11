@@ -7,10 +7,12 @@ import fs from 'fs';
 const prompt = promptSync();
 const arquivo = 'dados.txt';
 
+// Variáveis para armazenar livros, membros e empréstimos.
 let livros: Livro[] = [];
 let membros: Membro[] = [];
 let emprestimos: Emprestimo[] = [];
 
+// Lê os dados do arquivo JSON e inicializa os arrays, criando instâncias das classes a partir dos dados.
 function lerDados() {
     try {
         const dados = fs.readFileSync(arquivo, 'utf-8');
@@ -23,9 +25,7 @@ function lerDados() {
             const membro = membros.find(m => m.getMatricula() === emprestimoData.membro.matricula);
             const dataEmprestimo = new Date(emprestimoData.dataEmprestimo);
             const emprestimo = new Emprestimo(livro!, membro!, dataEmprestimo);
-            if (emprestimoData.dataDevolucao) {
-                emprestimo.devolver();
-            }
+            if (emprestimoData.dataDevolucao) emprestimo.devolver();
             return emprestimo;
         });
     } catch (err) {
@@ -33,6 +33,7 @@ function lerDados() {
     }
 }
 
+// Salva os dados dos arrays no arquivo, convertendo-os para JSON.
 function salvarDados() {
     const dados = {
         livros: livros.map(l => ({ titulo: l.getTitulo(), autor: l.getAutor(), isbn: l.getIsbn(), ano: l.getAnoPublicacao() })),
@@ -49,16 +50,19 @@ function salvarDados() {
     console.log('Dados salvos com sucesso!');
 }
 
+// Captura a escolha de uma opção do usuário, retornando o número selecionado.
 function opcao(): number {
     return parseInt(prompt("Escolha uma opção: "), 10);
 }
 
+// Exibe um menu genérico com um título e uma lista de opções.
 function exibirMenu(menu: string, opcoes: string[]): number {
     console.log(`\n=== ${menu} ===`);
     opcoes.forEach((opcao, index) => console.log(`${index + 1} - ${opcao}`));
     return opcao();
 }
 
+// Funções para as operações principais de cadastro e manipulação de livros, membros e empréstimos.
 function cadastrarLivro() {
     const titulo = prompt("Digite o título do livro: ");
     const autor = prompt("Digite o autor do livro: ");
@@ -96,6 +100,7 @@ function realizarEmprestimo() {
     }
 }
 
+// Carrega os dados e inicia o loop principal do programa, onde o usuário pode interagir com os menus.
 lerDados();
 
 while (true) {
@@ -105,6 +110,7 @@ while (true) {
 
     switch (escolha) {
         case 1:
+            // Submenu para gerenciar livros.
             while (true) {
                 const escolhaLivro = exibirMenu("Menu Livro", [
                     "Cadastrar livro", "Listar livros", "Atualizar livros", "Excluir livro", "Voltar ao menu principal"
@@ -131,7 +137,9 @@ while (true) {
                 } else if (escolhaLivro === 5) break;
             }
             break;
+
         case 2:
+            // Submenu para gerenciar membros.
             while (true) {
                 const escolhaMembro = exibirMenu("Menu Membro", [
                     "Cadastrar membro", "Listar membros", "Atualizar membro", "Excluir membro", "Voltar ao menu principal"
@@ -158,7 +166,9 @@ while (true) {
                 } else if (escolhaMembro === 5) break;
             }
             break;
+
         case 3:
+            // Submenu para gerenciar empréstimos.
             while (true) {
                 const escolhaEmprestimo = exibirMenu("Menu Emprestimo", [
                     "Realizar empréstimo", "Listar empréstimos", "Devolver livro", "Voltar ao menu principal"
@@ -181,9 +191,11 @@ while (true) {
                 } else if (escolhaEmprestimo === 4) break;
             }
             break;
+
         case 4:
             console.log("Saindo...");
             process.exit(0);
+
         default:
             console.log("Opção inválida!");
             break;

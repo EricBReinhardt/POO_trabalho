@@ -5,6 +5,18 @@
       "autor": "J.R.R. Tolkien",
       "isbn": "978-0618640157",
       "ano": 1954
+    },
+    {
+      "titulo": "1984",
+      "autor": "George Orwell",
+      "isbn": "978-0451524935",
+      "ano": 1949
+    },
+    {
+      "titulo": "Dom Quixote",
+      "autor": "Miguel de Cervantes",
+      "isbn": "978-8491050250",
+      "ano": 1605
     }
   ],
   "membros": [
@@ -13,6 +25,18 @@
       "telefone": "11987654321",
       "endereco": "Rua das Flores, 123, São Paulo",
       "matricula": "123456"
+    },
+    {
+      "nome": "Maria Oliveira",
+      "telefone": "21987654321",
+      "endereco": "Avenida Central, 456, Rio de Janeiro",
+      "matricula": "654321"
+    },
+    {
+      "nome": "Carlos Pereira",
+      "telefone": "31987654321",
+      "endereco": "Praça da Liberdade, 789, Belo Horizonte",
+      "matricula": "789123"
     }
   ],
   "emprestimos": [
@@ -24,6 +48,26 @@
         "matricula": "123456"
       },
       "dataEmprestimo": "2024-12-09T10:00:00.000Z",
+      "dataDevolucao": null
+    },
+    {
+      "livro": {
+        "isbn": "978-0451524935"
+      },
+      "membro": {
+        "matricula": "654321"
+      },
+      "dataEmprestimo": "2024-12-10T14:00:00.000Z",
+      "dataDevolucao": "2024-12-20T14:00:00.000Z"
+    },
+    {
+      "livro": {
+        "isbn": "978-8491050250"
+      },
+      "membro": {
+        "matricula": "789123"
+      },
+      "dataEmprestimo": "2024-12-11T09:30:00.000Z",
       "dataDevolucao": null
     }
   ]
